@@ -4,10 +4,9 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-// Serve static files from the "public" directory
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Endpoint to get product data
 app.get('/products', async (req, res) => {
     try {
         const response = await fetch('https://dummyjson.com/products');
@@ -18,7 +17,6 @@ app.get('/products', async (req, res) => {
     }
 });
 
-// Endpoint to get a specific product by ID
 app.get('/products/:id', async (req, res) => {
     const productId = req.params.id;
     try {
